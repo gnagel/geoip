@@ -169,7 +169,6 @@ type GeoIPRecord struct {
 	PostalCode    string
 	Latitude      float32
 	Longitude     float32
-	DMACode       int
 	MetroCode     int
 	AreaCode      int
 	CharSet       int
@@ -213,7 +212,6 @@ func (gi *GeoIP) GetRecord(ip string) *GeoIPRecord {
 		   The union is unnamed, so cgo names it anon0 and assumes it's a 4-byte array.
 		*/
 		union_int := (*int32)(unsafe.Pointer(&record.anon0))
-		rec.DMACode = int(*union_int)
 		rec.MetroCode = int(*union_int)
 		rec.AreaCode = int(record.area_code)
 	}
